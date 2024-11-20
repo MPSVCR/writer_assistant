@@ -49,10 +49,45 @@ cd backend
 Create configuration file `backend/config/application.yaml`. You can use `backend/config/application.sample.yaml` as a template.
 
 ```shell
-./gradlew bootRun
+./gradlew run
 ```
+Open http://localhost:8080 in browser.
 
 ### Frontend
 ```shell
 pnpm dev 
 ```
+
+Open http://localhost:5173 in browser.
+
+## Usage
+
+At the beginning, you need to choose whether you want to use text creation from an outline (*Chat*), a suggestion tool (*Našeptávač*),
+or text creation from an outline using a trained (fine-tuned) model (*Trénovaný chat*).
+
+## Chat
+
+Enter key information in bullet points (in Czech) that you want to include in the final text. For example:
+
+> žije sám, pečuje o dvě nezletilé děti, matka dětí nezvěstná, občas vypomáhá matka, práci shání neúspěšně, žije z podpory
+
+After creating the text, you can add more information to the input, based on which the text will be adjusted (re-generated).
+
+AI is instructed to create a document with a predefined structure.
+
+## Suggestion Tool (našeptávač)
+
+Start typing (Czech) text. After pressing <kbd>Ctrl+Enter</kbd>, three possible continuations of the text will be displayed. Select one of them and press <kbd>Enter</kbd>.  
+The text completion is offered at the position where the text cursor is placed.
+
+For example:
+
+> Pan Myslík žije sám, pečuje o dvě nezletilé děti. Matka dětí
+
+## Trained Chat (Trénovaný chat)
+
+Enter key information in bullet points (in Czech) that you want to include in the final text, similar to the basic text. For example:
+
+> žije sám, pečuje o dvě nezletilé děti, matka dětí nezvěstná, občas vypomáhá matka, práci shání neúspěšně, žije z podpory
+
+AI is instructed to create a document with a free structure, based solely on trained data.
