@@ -48,6 +48,7 @@ dependencyManagement {
 
 application {
     mainClass = 'cz.oksystem.aihackathon.writerassistant.WriterAssistantApplication'
+    applicationName = 'writer-assistant'
 }
 
 def copyFrontend = tasks.register("copyFrontend", Copy) {
