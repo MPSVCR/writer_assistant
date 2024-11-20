@@ -1,0 +1,21 @@
+GET http://localhost:80/api/item?id=99
+Accept: application/json
+
+###
+POST http://localhost:8080/api/createDocument
+Content-Type: application/json
+tralalacek: cdad63ce-e703-412f-969f-aad36bbbaafd
+
+"ahoj, jak se mas?"
+
+###
+POST http://localhost:8080/api/createDocument?model=italian
+Content-Type: application/json
+tralalacek: cdad63ce-e703-412f-969f-aad36bbbaafd
+
+
+"j"
+
+###
+
+
