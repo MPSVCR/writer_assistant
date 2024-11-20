@@ -1,4 +1,4 @@
-import {useState, useEffect, useRef, MouseEvent, KeyboardEvent} from "react";
+import {useState, useEffect, useRef, KeyboardEvent} from "react";
 import {getData} from "../api/naseptavacApi.ts";
 import {useAtom} from "jotai/index";
 import {naseptavacAtom} from "../atomStore.ts";
@@ -21,8 +21,8 @@ function NaseptavacTextArea({model}: Props) {
     const [showHint, setShowHint] = useState<boolean>(false)
     const [promptPending, setPromptPending] = useState(false)
 
-    const handleClickOutside = (event: MouseEvent<HTMLDivElement>) => {
-        if (hintRef.current && !hintRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+        if (hintRef.current && event.target instanceof Node && !hintRef.current.contains(event.target)) {
             setShowHint(false)
         }
     };
