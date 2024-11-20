@@ -1,50 +1,57 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.3.5'
-	id 'io.spring.dependency-management' version '1.1.6'
+    id 'java'
+    id 'org.springframework.boot' version '3.3.5'
+    id 'io.spring.dependency-management' version '1.1.6'
 }
 
 group = 'cz.oksystem.aihackathon'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
-	}
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }
 
 repositories {
-	mavenCentral()
-	maven { url 'https://repo.spring.io/milestone' }
+    mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
 }
 
 ext {
-	set('springAiVersion', "1.0.0-M3")
+    set('springAiVersion', "1.0.0-M3")
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.ai:spring-ai-azure-openai-spring-boot-starter'
-	implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.18.1")
-	implementation("com.fasterxml.jackson.core:jackson-annotations:2.18.1")
-	implementation("com.fasterxml.jackson.core:jackson-databind:2.18.1")
-	implementation("com.fasterxml.jackson.core:jackson-core:2.18.1")
-	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.ai:spring-ai-azure-openai-spring-boot-starter'
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.18.1")
+    implementation("com.fasterxml.jackson.core:jackson-annotations:2.18.1")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.18.1")
+    implementation("com.fasterxml.jackson.core:jackson-core:2.18.1")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     // Lombok
-	annotationProcessor 'org.projectlombok:lombok:1.18.34'
-	compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+    compileOnly 'org.projectlombok:lombok:1.18.34'
 
 }
 
 dependencyManagement {
-	imports {
-		mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}"
-	}
+    imports {
+        mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}"
+    }
 }
 
+def copyFrontend = tasks.register("copyFrontend", Copy) {
+    from "../frontend/dist"
+    into "src/main/resources/public"
+}
+
+tasks.named("processResources").configure { dependsOn(copyFrontend) }
+
 tasks.named('test') {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }

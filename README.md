@@ -46,6 +46,8 @@ cd backend
 ## Development
 
 ### Backend
+Create configuration file `backend/config/application.yaml`. You can use `backend/config/application.sample.yaml` as a template.
+
 ```shell
 ./gradlew bootRun
 ```

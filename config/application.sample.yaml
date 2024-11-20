@@ -1,6 +1,0 @@
-spring:
-  ai:
-    azure:
-      openai:
-        api-key: xxxxxxxxxxxxxxxxxxx                  # Replace with your API key from Azure
-        endpoint: https://xxxxxx.openai.azure.com/    # Replace with your endpoint from Azure
