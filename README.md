@@ -77,7 +77,7 @@ AI is instructed to create a document with a predefined structure.
 
 ## Suggestion Tool (našeptávač)
 
-Start typing (Czech) text. After pressing <kbd>Ctrl+Enter</kbd>, three possible continuations of the text will be displayed. Select one of them and press <kbd>Enter</kbd>.  
+Start typing (Czech) text. After pressing <kbd>Ctrl+Enter</kbd>, three possible continuations of the text will be displayed. Select one of them with mouse.  
 The text completion is offered at the position where the text cursor is placed.
 
 For example:
